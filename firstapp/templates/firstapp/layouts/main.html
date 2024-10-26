@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>
+        {% block title %}
+
+        {% endblock title %}
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css" integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <style>
+        *{
+            font-family: 'Roboto', sans-serif;
+        }
+        a{
+            text-decoration: none;
+        }
+        .product-viewtag{
+            background-color: red;
+            color: #fff;
+            font-size: 11px;
+            line-height: 1;
+            position: absolute;
+            text-align: center;
+            text-transform: uppercase;
+            top: 22px;
+            margin-left: 17.5rem;
+            padding: 7px 10px;
+            font-weight: 600;
+            min-width: 45px;
+        }
+
+        #carouselExampleIndicators{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .active{
+            font-weight: 800;
+            color: blue;
+        }
+
+        input {
+            background-color: none;
+            border-color: none;
+        }
+    </style>
+</head>
+<body>
+    {% include 'firstapp/inc/navbar.html' %}
+    {% block content %}
+
+    {% endblock content %}
+    
+    <script src="{% static '/js/jquery-3.7.1.min.js' %}"></script>
+    <script src="{% static '/js/custom.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    
+    <script>
+        alertify.set('notifier','position', 'top-right');
+        {% for message in messages %}
+        alertify.success('{{ message }}');
+        {% endfor %}
+    </script>
+    {% block scripts %}
+    
+    {% endblock scripts %}
+</body>
+</html>

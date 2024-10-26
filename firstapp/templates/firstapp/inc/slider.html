@@ -1,0 +1,124 @@
+{% load static %}
+
+<!--<div id="carouselExampleIndicators" class="carousel slide" style="position: relative;">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src= "{% static 'images/side.jpeg' %}" height=400px class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'images/side.jpeg' %}" height=400px class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'images/side.jpeg' %}" height=400px class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+</div>-->
+<section>
+  <div class="container-fluid px-4 py-4 bg-light">
+      <div class="row g-2">
+        <div class="col-md-8" style="margin-left: -28px">
+          <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" style="max-width: 800px; margin: 0 auto;">
+              <div class="carousel-inner">
+                {% for x in slide %}
+                <div class="carousel-item active">
+                  <img src="{{ x.image1.url }}" class="d-block w-100 img-fluid" alt="img">
+                </div>
+                <div class="carousel-item">
+                  <img src="{{ x.image2.url }}" class="d-block w-100 img-fluid" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="{{ x.image3.url }}" class="d-block w-100 img-fluid" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="{{ x.image4.url }}" class="d-block w-100 img-fluid" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="{{ x.image5.url }}" class="d-block w-100 img-fluid" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="{{ x.image6.url }}" class="d-block w-100 img-fluid" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="{{ x.image7.url }}" class="d-block w-100 img-fluid" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="{{ x.image8.url }}" class="d-block w-100 img-fluid" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="{{ x.image9.url }}" class="d-block w-100 img-fluid" alt="...">
+                </div>
+                {% endfor %}
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+          </div>
+      </div>
+      {% for x in slide %}
+          <div class="col-md-2 d-sm-block mx-1 px-2">
+              <div class="card bg-light shadow">
+                  <img src= "{{ x.card1.url }}" class="w-40 img-fluid" style="height: 146px;" alt=""><br>
+                  <img src= "{{ x.card2.url }}" class="w-40 img-fluid d-none d-md-none d-lg-flex d-sm-flex" style="height: 146px;" alt="">
+              </div>
+          </div>
+         
+          <div class="col-md-2 d-sm-block mx-2 px-2">
+              <div class="card bg-light shadow">
+                  <img src="{{ x.card3.url }}" class="w-60 img-fluid" style="height: 146px;" alt=""><br>
+                  <img src="{{ x.card4.url }}" class="w-60 d-none d-md-none d-lg-flex d-sm-flex img-fluid" style="height: 146px;" alt="">
+              </div>
+          </div>
+      {% endfor %}
+      </div>
+  </div>        
+</section>
+<!--<section>
+  <div class="py-3 bg-primary">
+    <div class="container">
+      <a class='text-white' href="{% url 'home' %}">Home /</a>
+      <a class='text-white' href="{% url 'collections' %}">Collections</a>
+    </div>
+  </div>-->
+
+    <div class="container-fluid bg-light">
+      <div class="row g-4">
+          <div class="col-md-12">
+              <h2 class="mx-3 p-2" style="color: white; width: 97%; background: #94004f url(https://res.cloudinary.com/staging-konga-com/image/upload/f_auto,q_auto/v1654791685/assets/images/homepage/Bg-Icons.png) no-repeat">Trending Products</h2> 
+              <div class="row g-4 mb-2 mx-1 pt-1">
+              {% for item in trending_products %}
+                  <div class="col-md-3">
+                      <div class="card shadow">
+                        <a href="{% url 'productview' item.category.slug item.slug %}">
+                          <div class="card-body h-50">
+                              <div class="category-image">
+                                  <img src="{{ item.product_image.url }}" alt="category image" height="150px" class=" w-100 img-fluid">
+                              </div>
+                              <h4 class="text-center h-50"> {{ item.name }} <h4>
+                          </div>
+                        </a>
+                      </div>  
+                  </div>
+              {% endfor %}
+          </div>
+      </div> 
+  </div> 
+</section>
+

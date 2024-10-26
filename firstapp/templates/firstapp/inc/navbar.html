@@ -1,0 +1,77 @@
+{% load static %}
+{% block title %}
+<style>
+  
+</style>
+{% endblock title %}
+<section>
+  <div class="container-fluid" style="background-color: #ed017f; width: 100%;" >
+      <div class=" align-items-center justify-content-between">
+       <img class="img-fluid" src="{% static "images/header1.jpg" %}" style="width: 100%; height: auto;" alt="img">
+      </div>
+  </div>
+</section>
+<nav class="navbar navbar-expand-lg bg-body-tertiary ">
+  <div class="container">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <div class="input-group news-input px-5 d-none d-sm-none d-lg-flex mx-5" style="width: 100% important; height:">
+      <input type="text" class="h-10 w-99" placeholder="Search Products" style="width:80%; border-color: #fba100; outline:none; border-radius: 10px 0px 0 10px;"/>
+      <button class="btn btn-lg h-10" type="button" style=" background-color: #fba100; width: 50px;">
+          <i class="fa fa-search" style="color: #fff; height: 0; width: 0; margin-left: -10px;"></i>
+      </button>
+  </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" aria-current="page" href="{% url 'home' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.resolver_match.url_name == 'collections' %}active{% endif %}" href="{% url 'collections' %}">Collections</a>
+        </li>
+        <li class="nav-item d-flex">
+          <a class="nav-link {% if request.resolver_match.url_name == 'cart' %}active{% endif %}" href="{% url 'cart' %}" style="position: relative;">Cart</a>
+          <i class="fa fa-shopping-cart" style="margin-top: 12px; margin-left: -5px; color: red;" ><span class="num" style="position: absolute; top: 16px; margin-right: 20px;">{{ cart_count }}</span></i>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.resolver_match.url_name == 'wishlist' %}active{% endif %}" href="{% url 'wishlist' %}" style="margin-left: 15px;">Wishlist</a>
+        </li>
+        {% if request.user.is_authenticated %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="{% url 'login' %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{ request.user.username }}
+          </a>
+          <ul class="dropdown-menu {% if request.resolver_match.url_name == 'logout_user' %}active{% endif %}">
+            <li><a class="dropdown-item" href="{% url 'logout_user' %}">Log Out</a></li>
+          </ul>
+        </li>
+        {% else %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle {% if request.resolver_match.url_name == 'login' %}active{% endif %}" href="{% url 'login' %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Sign in
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item {% if request.resolver_match.url_name == 'signup' %}active{% endif %}" href="{% url 'signup' %}">Sign Up</a></li>
+              <li><a class="dropdown-item {% if request.resolver_match.url_name == 'login' %}active{% endif %}" href="{% url 'login' %}">Login</a></li>
+            </ul>
+          </li>
+        {% endif %}
+        <!--<li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>-->
+    </div>
+  </div>
+</nav>
+
+{% block scripts %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+	
+{% endblock scripts %}
