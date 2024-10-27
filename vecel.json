@@ -1,9 +1,15 @@
 {
-    "builds": [{
-        "src": "firstproject/wsgi.py",
-        "use": "@vecel/python",
-        "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
-    }],
+    "builds": [
+        {
+            "src": "firstproject/wsgi.py",
+            "use": "@vercel/python",
+            "config": { 
+                "maxLambdaSize": "15mb", 
+                "runtime": "python3.9",
+                "entrypoint": "firstproject/wsgi.py"
+            }
+        }
+    ],
     "routes": [
         {
             "src": "/(.*)",
