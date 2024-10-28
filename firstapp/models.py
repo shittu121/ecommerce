@@ -8,7 +8,7 @@ def get_file_path(request, filename):
     original_filename = filename
     nowTime = datetime.datetime.now().strftime('%Y%m%d%h:%M:%S')
     filename = "%s%s" % (nowTime, original_filename)
-    return os.path.join('myuploads/', filename)
+    return os.path.join('images/myuploads/', filename)
 
 class Category(models.Model):
     slug = models.CharField(max_length=150, null=False, blank=False)
