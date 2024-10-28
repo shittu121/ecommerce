@@ -109,19 +109,19 @@ class Profile(models.Model):
 
 class slider(models.Model):
     caption=models.CharField(max_length=100)
-    image1 = models.ImageField(upload_to=get_file_path, null=True, blank=True)
-    image2 = models.ImageField(upload_to=get_file_path, null=True, blank=True)
-    image3 = models.ImageField(upload_to=get_file_path, null=True, blank=True)
-    image4 = models.ImageField(upload_to=get_file_path, null=True, blank=True)
-    image5 = models.ImageField(upload_to=get_file_path, null=True, blank=True)
-    image6 = models.ImageField(upload_to=get_file_path, null=True, blank=True)
-    image7 = models.ImageField(upload_to=get_file_path, null=True, blank=True)
-    image8 = models.ImageField(upload_to=get_file_path, null=True, blank=True)
-    image9 = models.ImageField(upload_to=get_file_path, null=True, blank=True)
-    card1 = models.ImageField(upload_to=get_file_path, null=True, blank=True)
-    card2 = models.ImageField(upload_to=get_file_path, null=True, blank=True)
-    card3 = models.ImageField(upload_to=get_file_path, null=True, blank=True)
-    card4 = models.ImageField(upload_to=get_file_path, null=True, blank=True)
+    image1 = models.URLField(max_length=500, blank=True)
+    image2 = models.URLField(max_length=500, blank=True)
+    image3 = models.URLField(max_length=500, blank=True)
+    image4 = models.URLField(max_length=500, blank=True)
+    image5 = models.URLField(max_length=500, blank=True)
+    image6 = models.URLField(max_length=500, blank=True)
+    image7 = models.URLField(max_length=500, blank=True)
+    image8 = models.URLField(max_length=500, blank=True)
+    image9 = models.URLField(max_length=500, blank=True)
+    card1 = models.URLField(max_length=500, blank=True)
+    card2 = models.URLField(max_length=500, blank=True)
+    card3 = models.URLField(max_length=500, blank=True)
+    card4 = models.URLField(max_length=500, blank=True)
 
     def __str__(self):
         return self.caption
