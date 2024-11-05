@@ -18,7 +18,7 @@
                          {% for item in wishlistitems %}
                             <div class="row product_data">
                                 <div class="col-md-2 my-auto py-3">
-                                     <img src="{{ item.product.product_image.url }}" height="70px" width="70px" alt="Image here">
+                                     <img src="{{ item.product.product_image }}" height="70px" width="70px" alt="Image here">
                                 </div>
                                 <div class="col-md-3 my-auto">
                                     {{ item.product.name }}
