@@ -24,19 +24,19 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto">
+      <ul class="navbar-nav ms-auto d-flex justify-content-center text-center">
         <li class="nav-item">
           <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" aria-current="page" href="{% url 'home' %}">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link {% if request.resolver_match.url_name == 'collections' %}active{% endif %}" href="{% url 'collections' %}">Collections</a>
         </li>
-        <li class="nav-item d-flex" style="gap: 1; align-items: center;">
+        <li class="nav-item d-flex justify-content-center" style="gap: 1; align-items: center;">
           <a class="nav-link {% if request.resolver_match.url_name == 'cart' %}active{% endif %}" href="{% url 'cart' %}" style="position: relative;">Cart</a>
           <i class="fa fa-shopping-cart" style="color: red;" ><span class="num" style="position: absolute; top: 16px; margin-right: 20px;">{{ cart_count }}</span></i>
         </li>
-        <li class="nav-item">
-          <a class="nav-link ml-xl-3if request.resolver_match.url_name == 'wishlist' %}active{% endif %}" href="{% url 'wishlist' %}">Wishlist</a>
+        <li class="nav-item px-lg-3">
+          <a class="nav-link {% if request.resolver_match.url_name == 'wishlist' %}active{% endif %}" href="{% url 'wishlist' %}">Wishlist</a>
         </li>
         {% if request.user.is_authenticated %}
         <li class="nav-item dropdown">
